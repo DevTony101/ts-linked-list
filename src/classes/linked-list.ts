@@ -18,11 +18,9 @@ export class LinkedList<T extends Base> implements List<T> {
   // -----------------
   // Create
   public append(data: T): void {
-    // inserción por cola
     const node = new Node(data, undefined);
     if (this.size === 0) {
-      // primer caso: La lista está vacía
-      this.head.pointTo(node); // guardando la dirección de memoria
+      this.head.pointTo(node);
       this.tail.pointTo(node);
     } else {
       this.tail.putAsNext(node);
@@ -32,7 +30,6 @@ export class LinkedList<T extends Base> implements List<T> {
   }
 
   prepend(data: T): void {
-    // inserción por cabeza
     const node = new Node(data, undefined);
     if (this.size === 0) {
       this.head.pointTo(node);
@@ -45,9 +42,8 @@ export class LinkedList<T extends Base> implements List<T> {
   }
 
   appendAt(data: T, index: number): void {
-    // inserción en una posición arbitraria
     if (index < 0 || index > this.size) {
-      throw new Error("El índice no es válido!!");
+      throw new Error("Index is not valid.");
     }
 
     if (index === 0) {
@@ -60,24 +56,15 @@ export class LinkedList<T extends Base> implements List<T> {
       return;
     }
 
-    // implementación
     let i = 0;
-    const auxPointer = Pointer.from(this.head); // 🔵
+    const auxPointer = Pointer.from(this.head);
     while (!auxPointer.nextNodeIsNull()) {
       
       if (i === index - 1) {
         const node = new Node(data, undefined);
-
-        // Guardamos la referencia al siguiente nodo
         const nextPointer = Pointer.from(auxPointer);
-        nextPointer.goToNextNode(); // 🟢
-
-        // Le decimos al nodo actual que su siguiente nodo
-        // será el nuevo
+        nextPointer.goToNextNode();
         auxPointer.putAsNext(node);
-
-        // Le decimos al nuevo nodo que su siguiente nodo será
-        // a donde sea que la flecha 🟢 apunte
         node.putAsNext(nextPointer.getNode());
         this.size++;
         break;
@@ -106,7 +93,7 @@ export class LinkedList<T extends Base> implements List<T> {
 
   get(index: number): Node<T> {
     if (index < 0 || index > this.size) {
-      throw new Error("El índice no es válido!!");
+      throw new Error("Index is not valid.");
     }
 
     if (index === 0) {

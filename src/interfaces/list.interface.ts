@@ -2,7 +2,6 @@ import { Base } from "./base.interface";
 import { Node } from "../classes/node";
 
 export interface List<T extends Base> { // ADT
-  // T no puede ser un tipo primitivo. No number, no string, etc
 
   // Create
   append(data: T): void;
