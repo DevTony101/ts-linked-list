@@ -9,10 +9,16 @@ export class LinkedList<T extends Base> implements List<T> {
   private tail: Pointer<T>;
   private size: number;
 
-  constructor() {
+  constructor(elements?: T[]) {
     this.head = new Pointer();
     this.tail = new Pointer();
     this.size = 0;
+    this.init(elements);
+  }
+
+  private init(elements: T[]) {
+    if (!elements) return;
+    elements.forEach(this.append.bind(this));
   }
 
   // -----------------

@@ -16,15 +16,28 @@ describe('Testing insertion of objects', () => {
 
   test('it should insert at the end of the list', () => {
     // Given
-    const data = 0;
-    const list = new LinkedList<any>();
+    const data = 5;
+    const list = new LinkedList<any>([1,2,3,4]);
 
     // When
-    list.prepend(data);
+    list.append(data);
 
     // Then
-    expect(list.getSize()).toBeGreaterThan(0);
-    expect(list.get(0)).not.toBeNull();
+    expect(list.get(list.getSize() - 1).data).toBe(data);
+  });
+
+  test('it should insert at a random position', () => {
+    // Given
+    const initialData = [1,2,3,4,5];
+    const data = 6;
+    const list = new LinkedList<any>(initialData);
+
+    // When
+    const randomIndex = Math.floor(Math.random() * (initialData.length - 1));
+    list.appendAt(data, randomIndex);
+
+    // Then
+    expect(list.get(randomIndex).data).toBe(data);
   });
 });
 
