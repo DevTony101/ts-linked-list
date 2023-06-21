@@ -9,7 +9,7 @@ export class LinkedList<T extends Base> implements List<T> {
   private tail: Pointer<T>;
   private size: number;
 
-  constructor(private readonly name: string) {
+  constructor() {
     this.head = new Pointer();
     this.tail = new Pointer();
     this.size = 0;
@@ -78,7 +78,6 @@ export class LinkedList<T extends Base> implements List<T> {
   // -----------------
   // Read
   print(): void {
-    console.log(`\nShowing list with name ${this.name}\n\n`);
     if (this.size > 0) {
       const auxPointer = Pointer.from(this.head);
       do {

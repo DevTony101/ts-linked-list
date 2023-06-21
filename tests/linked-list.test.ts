@@ -1,9 +1,10 @@
 import { LinkedList } from "../src/classes/linked-list";
+
 describe('Testing insertion of objects', () => {
   test('it should insert at the head of the list', () => {
     // Given
     const data = 0;
-    const list = new LinkedList<any>('Test');
+    const list = new LinkedList<any>();
 
     // When
     list.prepend(data);
@@ -16,7 +17,7 @@ describe('Testing insertion of objects', () => {
   test('it should insert at the end of the list', () => {
     // Given
     const data = 0;
-    const list = new LinkedList<any>('Test');
+    const list = new LinkedList<any>();
 
     // When
     list.prepend(data);
